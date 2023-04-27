@@ -18,6 +18,7 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, Border, Side, PatternFill, Color
 import os
+import dateutil.parser
 
 
 openai.api_key = st.secrets['api_key']
@@ -89,7 +90,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     for l in links:
         try:
             #if datetime.datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut or datetime.datetime.strptime(l[1], '%b %d, %Y').date() > date_cut:
-            if datetime.datetime.strptime(l[1], '%b %d, %Y').date() > date_cut:
+            if datetime.datetime.strptime(l[1], '%b %d, %Y').date() > date_cut_datetime.date():
                 result_list = ask_chatGPT(l[0], automated, tribo)
                 dados.append(result_list)
         except:
@@ -294,8 +295,8 @@ with st.sidebar:
     data_corte = st.date_input(
         'Data de Corte',
         datetime.date.today() - datetime.timedelta(days=90))
-    date_cut = data_corte.strftime('%b %d, %Y')
-    date_cut = datetime.datetime.combine(date_cut, time.min)
+    date_cut_datetime = dateutil.parser.parse(data_corte)
+    date_cut = date_cut_datetime.strftime("%b %d, %Y")
     st.caption('Serão coletadas notícias apenas a partir da data escolhida')
     n_links = st.slider('Nº Máximo de Notícias', 5, 30, 10)
     st.caption('As notícias são ordenadas de acordo com os resultados do Google, ou seja, por relevância.')
