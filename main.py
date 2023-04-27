@@ -73,7 +73,6 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
                     pass
 
         if len(links) < n_links:
-            st.write('Teste')
             try:
                 driver.get(
                     driver.find_element(By.XPATH, '//*[@id="pnnext"]').get_attribute(
@@ -89,8 +88,10 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
 
     for l in links:
         try:
+            st.write('Teste1')
             if datetime.datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut:
                 result_list = ask_chatGPT(l[0], automated, tribo)
+                st.write('Teste2')
                 dados.append(result_list)
         except:
             pass
@@ -105,6 +106,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
         report_toExcel(df, 'ReportAutomatico')
         with open('ReportAutomatico.xlsx', 'rb') as my_file:
             st.download_button(label='Download', data=my_file, file_name='reportautomatico.xlsx')
+    st.write('Teste3')
 
 
 
