@@ -28,8 +28,9 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     options = Options()
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument('--start-maximized')
+    webdriver_service = Service('./chromedriver.exe')
     # options.headless = True
-    driver = webdriver.Chrome(executable_path='./chromedriver.exe', options=options)
+    driver = webdriver.Chrome(service=webdriver_service, options=options)
     driver.get('https://www.google.com.br/')
     try:
         text_area = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
