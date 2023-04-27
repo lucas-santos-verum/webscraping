@@ -89,6 +89,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     for l in links:
         try:
             if datetime.datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut:
+                st.write('Teste')
                 result_list = ask_chatGPT(l[0], automated, tribo)
                 dados.append(result_list)
         except:
