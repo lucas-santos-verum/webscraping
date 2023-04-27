@@ -73,7 +73,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
                     pass
 
         if len(links) < n_links:
-            print('TESTE')
+            st.write('Teste')
             try:
                 driver.get(
                     driver.find_element(By.XPATH, '//*[@id="pnnext"]').get_attribute(
