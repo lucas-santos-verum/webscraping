@@ -1,6 +1,6 @@
 
 
-from datetime import datetime
+from datetime import datetime, time
 import datetime
 import streamlit as st
 from selenium import webdriver
@@ -295,6 +295,7 @@ with st.sidebar:
         'Data de Corte',
         datetime.date.today() - datetime.timedelta(days=90))
     date_cut = data_corte.strftime('%b %d, %Y')
+    date_cut = datetime.datetime.combine(date_cut, time.min)
     st.caption('Serão coletadas notícias apenas a partir da data escolhida')
     n_links = st.slider('Nº Máximo de Notícias', 5, 30, 10)
     st.caption('As notícias são ordenadas de acordo com os resultados do Google, ou seja, por relevância.')
