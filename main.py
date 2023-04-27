@@ -295,8 +295,8 @@ with st.sidebar:
     data_corte = st.date_input(
         'Data de Corte',
         datetime.date.today() - datetime.timedelta(days=90))
-    date_cut_datetime = dateutil.parser.parse(data_corte)
-    date_cut = date_cut_datetime.strftime("%b %d, %Y")
+    # date_cut_datetime = dateutil.parser.parse(data_corte)
+    date_cut = data_corte.strftime("%b %d, %Y")
     st.caption('Serão coletadas notícias apenas a partir da data escolhida')
     n_links = st.slider('Nº Máximo de Notícias', 5, 30, 10)
     st.caption('As notícias são ordenadas de acordo com os resultados do Google, ou seja, por relevância.')
