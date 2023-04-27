@@ -33,7 +33,8 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     options.add_argument("--no-sandbox")
     options.headless = True
     webdriver_service = Service(r'C:\Users\LucasSantos\Documents\webscraping_final\chromedriver\chromedriver.exe')
-    driver = webdriver.Chrome(service=webdriver_service, options=options)
+    chromedriver_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'chromedriver', 'chromedriver.exe')
+    driver = webdriver.Chrome(chromedriver_path, options=options)
     driver.get('https://www.google.com.br/')
     try:
         text_area = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
