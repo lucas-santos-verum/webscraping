@@ -17,6 +17,7 @@ import re
 import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, Border, Side, PatternFill, Color
+import os
 
 
 openai.api_key = st.secrets['api_key']
@@ -31,7 +32,8 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.headless = True
-    driver = webdriver.Chrome("./chromedriver", options=options)
+    chromedriver_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'chromedriver', 'chromedriver.exe')
+    driver = webdriver.Chrome(chromedriver_path, options=options)
     driver.get('https://www.google.com.br/')
     try:
         text_area = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
