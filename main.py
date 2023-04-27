@@ -88,11 +88,12 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
 
     for l in links:
         try:
-            if datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut:
+            if datetime.datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut:
                 result_list = ask_chatGPT(l[0], automated, tribo)
                 dados.append(result_list)
         except:
-            st.write('Teste')
+            res = (datetime.datetime.strptime(l[1], '%d de %b. de %Y').date() > date_cut).__str__()
+            st.write(res)
     if not automated:
         df = pd.DataFrame(dados, columns=['Link', 'Sumário', 'Empresa', 'Investimento', 'Local', 'Contato', 'Cold Call'])
         report_toExcel(df, 'Report')
