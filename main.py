@@ -21,7 +21,7 @@ from openpyxl.styles import Alignment, Font, Border, Side, PatternFill, Color
 
 openai.api_key = st.secrets['api_key']
 
-locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
+locale.setlocale(locale.LC_ALL, 'pt_BR')
 
 
 def run(words, n_links, date_cut, tribo=None, automated=False):
