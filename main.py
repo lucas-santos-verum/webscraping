@@ -92,7 +92,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
                 result_list = ask_chatGPT(l[0], automated, tribo)
                 dados.append(result_list)
         except:
-            pass
+            st.write('Teste')
     if not automated:
         df = pd.DataFrame(dados, columns=['Link', 'Sumário', 'Empresa', 'Investimento', 'Local', 'Contato', 'Cold Call'])
         report_toExcel(df, 'Report')
