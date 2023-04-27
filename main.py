@@ -31,7 +31,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.headless = True
-    driver = webdriver.Chrome("./chromedriver", options=options)
+    driver = webdriver.Chrome("./chromedriver", options=options, service=Service('./chromedriver'))
     driver.get('https://www.google.com.br/')
     try:
         text_area = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
