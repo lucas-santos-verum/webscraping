@@ -73,10 +73,16 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
                     pass
 
         if len(links) < n_links:
-            driver.get(
-                driver.find_element(By.XPATH, '//*[@id="pnnext"]').get_attribute(
-                    'href')
-            )
+            try:
+                driver.get(
+                    driver.find_element(By.XPATH, '//*[@id="pnnext"]').get_attribute(
+                        'href')
+                )
+            except:
+                driver.get(
+                    driver.find_element(By.XPATH, '/html/body/div[7]/div/div[11]/div/div[4]/div/div[2]/table/tbody/tr/td[12]/a').get_attribute(
+                        'href')
+                )
         else:
             driver.close()
 
