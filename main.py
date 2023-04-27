@@ -110,7 +110,6 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
 
 
 def ask_chatGPT(link, automated, tribo=None):
-    st.write('Teste2')
 
     response = openai.Completion.create(model="text-davinci-003",
                                         prompt="Sumarize a notícia deste link:\n\n " + link, temperature=0.50,
@@ -292,9 +291,10 @@ with st.sidebar:
     # keywords = st.text_input('Palavras-Chave (;)', 'Mineração; Investimentos')
     setor = st.text_input('Setor', 'Saneamento')
     empresa = st.text_input('Empresa', 'Iguá')
-    date_cut = st.date_input(
+    data_corte = st.date_input(
         'Data de Corte',
         datetime.date.today() - datetime.timedelta(days=90))
+    date_cut = data_corte.strftime('%b %d, %Y')
     st.caption('Serão coletadas notícias apenas a partir da data escolhida')
     n_links = st.slider('Nº Máximo de Notícias', 5, 30, 10)
     st.caption('As notícias são ordenadas de acordo com os resultados do Google, ou seja, por relevância.')
