@@ -29,7 +29,7 @@ def run(words, n_links, date_cut, tribo=None, automated=False):
     options = Options()
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument('--start-maximized')
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     # options.headless = True
     webdriver_service = Service(r'C:\Users\LucasSantos\Documents\webscraping_final\chromedriver\chromedriver.exe')
